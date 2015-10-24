@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	<!--<properties url="file:///D:/softcode/mybatis.properties" /> -->
+	<!--<classPathEntry location="C:/maven-lib/mysql/mysql-connector-java/5.1.26/mysql-connector-java-5.1.26.jar" 
+		/> -->
+
+	<!-- 【官方配置参考】 http://mybatis.github.io/generator/configreference/xmlconfig.html -->
+
+	<context id="MBG" targetRuntime="MyBatis3" defaultModelType="conditional">	<!--targetRuntime 此属性用于指定生成的代码的运行目标。 -->
+		<plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin" />
+
+		<!-- 一些方法不需要生成 -->
+		<plugin type="com.generator.plugin.NoNeededMethodFilterPlugin" />
+
+		<!-- 分页插件，xml生成和注解生成都支持。 -->
+		<plugin type="com.generator.plugin.PaginationSupportedPlugin" />
+
+		<plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+			<property name="searchString" value="Example$" />
+			<property name="replaceString" value="Criteria" />
+		</plugin>
+		<commentGenerator>
+			<!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+			<property name="suppressAllComments" value="false" />
+			<property name="suppressDate" value="true" />
+		</commentGenerator>
+
+
+		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
+		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+			connectionURL="jdbc:mysql://183.61.2.143:3306/buy?useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;autoReconnect=true&amp;amp;profileSQL=false"
+			userId="root" password="root">
+		</jdbcConnection>
+
+		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 和 
+			NUMERIC 类型解析为java.math.BigDecimal -->
+		<javaTypeResolver>
+			<property name="forceBigDecimals" value="false" />											<!-- 类型解析器 -->
+		</javaTypeResolver>
+
+		<!-- 实体类生成目录 -->
+		<javaModelGenerator targetPackage="com.yy.buy.domain"
+			targetProject="./src/main/java">
+			<property name="enableSubPackages" value="true" />
+			<property name="trimStrings" value="true" />
+		</javaModelGenerator>
+
+		<!-- mapper xml存放目录 -->
+		<sqlMapGenerator targetPackage="com.yy.buy.mapper"
+			targetProject="./src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</sqlMapGenerator>
+
+		<!-- mapper接口存放目录, type="XMLMAPPER"表示生成xml映射，type="ANNOTATEDMAPPER"表示生成注解映射 -->
+		<javaClientGenerator type="XMLMAPPER"
+			targetPackage="com.yy.buy.mapper" targetProject="./src/main/java">
+			<property name="enableSubPackages" value="true" />
+		</javaClientGenerator>
+
+
+
+
+
+		<!-- <table schema="product" tableName="product" domainObjectName="Product" 
+			enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" 
+			enableSelectByExample="true" selectByExampleQueryId="true"> 下面两行顺序不能调换。 是否使用数据库列名映射到实体类中 
+			<property name="useActualColumnNames" value="true" /> 标识主键，并且可以在insert之后，获得该主键 
+			<generatedKey column="productId" sqlStatement="MySql" identity="true" /> 
+			</table> -->
+
+		<!-- <table schema="order_item" tableName="order_item" domainObjectName="OrderItem" 
+			enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" 
+			enableSelectByExample="true" selectByExampleQueryId="true"> 下面两行顺序不能调换。 是否使用数据库列名映射到实体类中 
+			<property name="useActualColumnNames" value="true" /> </table> -->
+
+		<!-- <table schema="order_mapper" tableName="order_mapper" domainObjectName="OrderMapper" 
+			enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" 
+			enableSelectByExample="true" selectByExampleQueryId="true"> 下面两行顺序不能调换。 是否使用数据库列名映射到实体类中 
+			<property name="useActualColumnNames" value="true" /> </table> -->
+
+		<!-- <table schema="postage" tableName="postage" domainObjectName="Postage" 
+			enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" 
+			enableSelectByExample="true" selectByExampleQueryId="true"> 下面两行顺序不能调换。 是否使用数据库列名映射到实体类中 
+			<property name="useActualColumnNames" value="true" /> </table> -->
+		<table schema="place" tableName="place" domainObjectName="Place"
+			enableCountByExample="true" enableUpdateByExample="true"
+			enableDeleteByExample="true" enableSelectByExample="true"
+			selectByExampleQueryId="true">
+	<!-- 下面两行顺序不能调换。 是否使用数据库列名映射到实体类中 -->
+			<property name="useActualColumnNames" value="true" />
+			<generatedKey column="placeId" sqlStatement="MySql"
+				identity="true" />
+		</table>
+		<!-- <table schema="province" tableName="province" domainObjectName="Province" 
+			enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" 
+			enableSelectByExample="true" selectByExampleQueryId="true"> 下面两行顺序不能调换。 是否使用数据库列名映射到实体类中 
+			<property name="useActualColumnNames" value="true" /> </table> <table schema="city" 
+			tableName="city" domainObjectName="City" enableCountByExample="true" enableUpdateByExample="true" 
+			enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true"> 
+			下面两行顺序不能调换。 是否使用数据库列名映射到实体类中 <property name="useActualColumnNames" value="true" 
+			/> </table> <table schema="area" tableName="area" domainObjectName="Area" 
+			enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" 
+			enableSelectByExample="true" selectByExampleQueryId="true"> 下面两行顺序不能调换。 是否使用数据库列名映射到实体类中 
+			<property name="useActualColumnNames" value="true" /> </table> -->
+		<!-- <table schema="user" tableName="user" domainObjectName="User" enableCountByExample="true" 
+			enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" 
+			selectByExampleQueryId="true"> 下面两行顺序不能调换。 是否使用数据库列名映射到实体类中 <property name="useActualColumnNames" 
+			value="true" /> <generatedKey column="uid" sqlStatement="MySql" identity="true" 
+			/> </table> -->
+		<!-- <table schema="refund_product" tableName="refund_product" domainObjectName="RefundProduct" 
+			enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" 
+			enableSelectByExample="true" selectByExampleQueryId="true"> 下面两行顺序不能调换。 是否使用数据库列名映射到实体类中 
+			<property name="useActualColumnNames" value="true" /> </table> -->
+
+	</context>
+</generatorConfiguration>
