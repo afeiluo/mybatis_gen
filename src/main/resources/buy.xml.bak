@@ -32,8 +32,8 @@
 
 		<!--数据库连接的信息：驱动类、连接地址、用户名、密码 -->
 		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
-			connectionURL="jdbc:mysql://ip:port/buy?useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;autoReconnect=true&amp;amp;profileSQL=false"
-			userId="xxx" password="xxx">
+			connectionURL="jdbc:mysql://183.61.2.143:3306/buy?useUnicode=true&amp;amp;characterEncoding=utf8&amp;amp;autoReconnect=true&amp;amp;profileSQL=false"
+			userId="root" password="root">
 		</jdbcConnection>
 
 		<!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer true，把JDBC DECIMAL 和 
